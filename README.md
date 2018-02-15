@@ -1,10 +1,3 @@
-# permit
+This project is unmaintained. Please consider forking it and doing whatever you'd like with it.
 
-A new flutter plugin project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
-
-For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
+PRs, issues and other requests will go unfulfilled and you may feel a pang of sadness.
