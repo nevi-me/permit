@@ -38,7 +38,7 @@ android {
 }
 
 buildscript {
-	ext.support_lib_ver = '25.3.1'
+	ext.support_lib_ver = '25.2.0'
 	ext.google_play_ver = '11.8.0'
 }
 

@@ -135,7 +135,7 @@ class PermitPlugin(val activity: Activity) : MethodCallHandler {
 		val permissions = resultData?.getStringArray("permissions")
 		val grantResults = resultData?.getIntArray("grantResults")
 		if (permissions != null && grantResults != null && (permissions.size == grantResults.size)) {
-			val resultsMap = mutableMapOf<Int, Int>()
+			val resultsMap = mutableMapOf<Int, MutableMap<String, Int>>()
 			val prefs = Prefs(activity)
 
 			for (i in 0 until permissions.size) {
@@ -151,10 +151,14 @@ class PermitPlugin(val activity: Activity) : MethodCallHandler {
 				if (grantResult == PackageManager.PERMISSION_GRANTED) {
 					permitGrantResult = PermitResult.granted
 				}
-				resultsMap[permissionPermitValue] = permitGrantResult.value
 				// Increment the number of times we have requested this from the user
 				val requestCount = prefs.incrementPermissionRequestCount(permission)
 				Log.d(LOG_TAG, "Permission $permission requested $requestCount times")
+
+				val map = mutableMapOf<String,Int>()
+				map["code"] = permitGrantResult.value
+				map["requestCount"] = requestCount
+				resultsMap[permissionPermitValue] = map
 			}
 			Log.d(LOG_TAG, "Returning a map of permisions and request results")
 			result.success(resultsMap)

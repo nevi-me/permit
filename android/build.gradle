@@ -39,13 +39,13 @@ android {
 
 buildscript {
 	ext.kotlin_version = '1.2.21'
-	ext.support_lib_ver = '27.0.2'
+	ext.support_lib_ver = '25.2.0'
 }
 
 dependencies {
 	// kotlin
-	compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 	// google
-	compile "com.android.support:support-v13:$support_lib_ver"
-	compile "com.android.support:support-v4:$support_lib_ver"
+	implementation "com.android.support:support-v13:$support_lib_ver"
+	implementation "com.android.support:support-v4:$support_lib_ver"
 }

@@ -105,10 +105,18 @@ class Permit {
   static Map<PermitType, PermissionStatus> _resultsFromMap(Map<int, Map<String, dynamic>> resultsMap) {
     Map<PermitType, PermissionStatus> finalResults = new Map<PermitType, PermissionStatus>();
     resultsMap.forEach((permitTypeInt, permissionResult) {
-      var status = new PermissionStatus(
-        PermissionStatusCode.values[permissionResult["code"]],
-        permissionResult["requestCount"],
-      );
+      var status;
+      if (permissionResult is int) {
+        status = new PermissionStatus(
+          PermissionStatusCode.values[permissionResult as int],
+          0,
+        );
+      } else {
+        status = new PermissionStatus(
+          PermissionStatusCode.values[permissionResult["code"]],
+          permissionResult["requestCount"],
+        );
+      }
       finalResults[_permitTypeFromInt(permitTypeInt)] = status;
     });
     return finalResults;
